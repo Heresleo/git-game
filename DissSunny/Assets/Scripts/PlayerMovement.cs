@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour {
 	public CharacterController2D controller;
 	public Animator animator;
 
+    public Joystick joystick;
+
 	public float runSpeed = 40f;
 
 	float horizontalMove = 0f;
@@ -16,20 +18,33 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        if (joystick.Horizontal >= .2f)
+        {
+            horizontalMove = runSpeed;
+        }
+        else if (joystick.Horizontal <= -.2f)
+        {
+            horizontalMove = -runSpeed;
+        }
+        else
+        {
+            horizontalMove = 0f;
+        }
 
-		animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        float verticalMove = joystick.Vertical;
 
-		if (Input.GetButtonDown("Jump"))
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+
+		if (verticalMove >= .5f)
 		{
 			jump = true;
 			animator.SetBool("IsJumping", true);
 		}
 
-		if (Input.GetButtonDown("Crouch"))
+		if (verticalMove <= -.5f)
 		{
 			crouch = true;
-		} else if (Input.GetButtonUp("Crouch"))
+		} else
 		{
 			crouch = false;
 		}
