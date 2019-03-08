@@ -10,16 +10,19 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.touchCount >=2 )
+        if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
         }
     }
 
-    void Shoot()
+    public void Shoot()
     {
         Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+
+        FindObjectOfType<AudioManager>().Play("Shoot");
+
     }
 
-    
+
 }

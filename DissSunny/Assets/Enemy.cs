@@ -9,6 +9,9 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         Instantiate(poof, transform.position, Quaternion.identity);
+
+        FindObjectOfType<AudioManager>().Play("PossumDeath");
+
         Destroy(gameObject);
     }
 

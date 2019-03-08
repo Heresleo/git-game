@@ -5,7 +5,7 @@ using UnityEngine;
 public class coinC : MonoBehaviour
 {
     private GameMaster gm;
-    // Start is called before the first frame update
+
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
@@ -18,5 +18,5 @@ public class coinC : MonoBehaviour
             gm.points += 1;
         }
     }
-  
+
 }

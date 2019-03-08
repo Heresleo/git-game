@@ -10,6 +10,7 @@ public class Spike_Killfloor : MonoBehaviour
     {
         if (col.gameObject.name == "Player")
         {
+            FindObjectOfType<AudioManager>().Play("PlayerDeath");
             col.transform.position = spawnPoint.position;  
         }
     }

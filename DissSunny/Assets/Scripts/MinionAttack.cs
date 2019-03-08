@@ -12,9 +12,10 @@ public class MinionAttack : MonoBehaviour
 
         if (col.gameObject.name=="Player")
         {
-            
+
+            FindObjectOfType<AudioManager>().Play("PlayerDeath");
             col.transform.position = spawnPoint.position;
-            //Destroy(col.gameObject);
+           
         }
 
        
